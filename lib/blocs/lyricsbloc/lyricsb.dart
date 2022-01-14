@@ -1,3 +1,3 @@
 export 'lyricsbloc.dart';
-export 'lyricsevent.dart';
+export 'lyricsEvent.dart';
 export 'lyricsstate.dart';

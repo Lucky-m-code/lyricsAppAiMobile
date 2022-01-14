@@ -155,8 +155,8 @@ class _HomePageState extends State<HomePage> {
 
                         builder: (context, state){
                           if(state is Authenticated){
-                            print("user user: ${state.user.isAdmin}");
-                            if(state.user.isAdmin){
+                            print("user user: ${state.user.toString()}");
+                            if(state.user.isAdmin==null){
                               return BlocConsumer<HomePageBloc, HomepageState>(
                                   listener: (context,  state){
                                     print('current state: ${state}');

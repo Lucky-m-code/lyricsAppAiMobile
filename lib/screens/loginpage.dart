@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                                     else if(state is SignInSuccesState){
                                       _scaffoldKey.currentState.showSnackBar(SnackBar(content : Text('logged in succesfully!')));
                                       BlocProvider.of<AuthenticationBloc>(context)..add(SaveAuthenticationInfo(user: state.user))..add(InitEvent());
-                                      if(state.user.isAdmin){
+                                      if(state.user.isAdmin == null){
                                         BlocProvider.of<HomePageBloc>(context)..add(HomepageEvent.GetLyrics)..add(HomepageEvent.GetTotalStatus);
                                       }else{
                                         BlocProvider.of<HomePageBloc>(context)..add(HomepageEvent.GetLyrics);

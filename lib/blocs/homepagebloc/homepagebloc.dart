@@ -8,6 +8,7 @@ import 'homepagestate.dart';
 
 enum HomepageEvent {
   GetLyrics,
+  GetRecom,
   GetTotalStatus
 }
 
@@ -23,10 +24,20 @@ class HomePageBloc extends Bloc<HomepageEvent, HomepageState>{
           yield HomepageBusyState();
           List<Lyrics> lyrics = await homePageRepository.getAllLyrics(page: 1);
           yield HomepageSuccessState(lyrics: lyrics);
-        }catch(error, stacktrace){
+        }catch(error, stacktrace) {
           print(stacktrace);
           yield HomepageFailureState();
         }
+      }
+        else if(event == HomepageEvent.GetRecom){
+          try {
+            yield HomepageBusyState();
+            List<Lyrics> lyrics = await homePageRepository.getRecomm(page: 1);
+            yield HomepageSuccessState(lyrics: lyrics);
+          }catch(error, stacktrace){
+            print(stacktrace);
+            yield HomepageFailureState();
+          }
       }else if(event == HomepageEvent.GetTotalStatus){
         try{
           yield HomepageStatBusyState();
