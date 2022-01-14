@@ -10,6 +10,9 @@ class HomepageRepository{
   Future<List<Lyrics>> getAllLyrics({page=1}) async{
     return await lyricsDataProvider.getAllLyrics(page: page);
   }
+  Future<List<Lyrics>> getRecomm({page=1}) async{
+    return await lyricsDataProvider.getRecom();
+  }
 
   Future<HomepageStat> getHomepageStat() async {
     return await lyricsDataProvider.getHomepageStat();

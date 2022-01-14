@@ -4,6 +4,8 @@ import 'package:dalvic_lyrics_sharing_app/repository/lyricsRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'lyricsEvent.dart';
+
 class LyricsBloc extends Bloc<LyricsEvents, LyricsState> {
   LyricsRepository lyricsRepository;
   LyricsBloc({@required this.lyricsRepository})

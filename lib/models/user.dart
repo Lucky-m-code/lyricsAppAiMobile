@@ -23,7 +23,7 @@ class User {
       email: json['email'],
       name: json['name'],
       token: json['token'],
-      isAdmin: json['isAdmin'],
+      isAdmin: true,
     );
   }
 

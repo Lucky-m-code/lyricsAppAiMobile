@@ -32,6 +32,24 @@ class LyricsDataProvider extends BaseDataProvider{
     print(lyrics);
     return lyrics;
   }
+  Future<List<Lyrics>> getRecom() async {
+    //the await keyword to get the completed result of an asynchronous expression. The await keyword only works within an async function.
+    var response = await httpClient.get('$baseUrl/lyricsRecom', headers: {HttpHeaders.authorizationHeader: "Bearer ${localHelper.getUser().token}"});
+    List<Lyrics> lyrics = new List<Lyrics>();
+    print('here');
+    //Manual JSON decoding refers to using the built-in JSON decoder in dart:convert.
+    //It involves passing the raw JSON string to the jsonDecode() function, and then looking up the values you need in the resulting Map<String, dynamic>.
+    List<dynamic> rawData = jsonDecode(response.body);
+    print(rawData[1]);
+    rawData[1].forEach((element) {
+      lyrics.add(Lyrics.fromJson(element));
+    });
+    // for(int i = 0; i < rawData.length; i++){
+    //   lyrics.add(Lyricslyrics.fromJson(rawData[i]));
+    // }
+    print(lyrics);
+    return lyrics;
+  }
 
   Future<Lyrics> updateMyLyrics({Lyrics lyrics}) async {
     var response = await httpClient.post('$baseUrl/lyrics/${lyrics.id}', body: {

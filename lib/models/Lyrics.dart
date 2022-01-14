@@ -17,7 +17,7 @@ class Lyrics extends Equatable{
       musicName: json['music_name'],
       artistName: json['artist_name'],
       lyrics: json['lyrics'],
-      status: json['status'],
+      status: true,
       url: json['url'],
     );
   }
